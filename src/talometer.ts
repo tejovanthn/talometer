@@ -61,9 +61,11 @@ export default class Talometer {
         }, sequence).start(0);
     }
     play() {
-        Tone.Transport.bpm.value = this.options.bpm;
-        Tone.Transport.start();
-        this.isPlaying = true;
+        Tone.getContext().resume().then(() => {
+            Tone.Transport.bpm.value = this.options.bpm;
+            Tone.Transport.start();
+            this.isPlaying = true;
+        });
     }
     stop() {
         Tone.Transport.stop();
