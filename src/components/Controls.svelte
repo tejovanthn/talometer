@@ -2,12 +2,12 @@
   import { tala, jati, pitch } from "../constants";
   import Dropdown from "./Dropdown.svelte";
   import Bpm from "./BPM.svelte";
-  export let bindvalue;
+  export let options;
 </script>
 
 <div class="flex flex-col">
-  <Dropdown options={tala} label={"Tala"} bindvalue={bindvalue.tala} />
-  <Dropdown options={jati} label={"Jati"} bindvalue={bindvalue.jati} />
-  <Dropdown options={pitch} label={"Pitch"} bindvalue={bindvalue.pitch} />
-  <Bpm bindvalue={bindvalue.bpm} />
+  <Dropdown options={tala} label={"Tala"} bind:value={options.tala} />
+  <Dropdown options={jati} label={"Jati"} bind:value={options.jati} />
+  <Dropdown options={pitch} label={"Pitch"} bind:value={options.pitch} />
+  <Bpm bind:value={options.bpm} />
 </div>

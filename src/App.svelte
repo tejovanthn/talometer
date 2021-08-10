@@ -4,7 +4,7 @@
   import { Button, Icon } from "smelte";
   import Controls from "./components/Controls.svelte";
 
-  const talometer_options = default_options;
+  let talometer_options = default_options;
 
   let isPlaying = false;
   const talometer = new Talometer(talometer_options);
@@ -21,7 +21,7 @@
 </script>
 
 <main class="container mx-auto p-4">
-  <Controls bindvalue={talometer_options} />
+  <Controls bind:options={talometer_options} />
   <Button
     id="playstop"
     on:click={handleClick}

@@ -3,10 +3,10 @@
 
     export let label;
     export let options;
-    export let bindvalue;
+    export let value;
 
     const remap = (arr) =>
         arr.map((el) => ({ value: el.id, text: `${el.value} (${el.id})` }));
 </script>
 
-<Select bind:value={bindvalue} {label} items={remap(options)} />
+<Select bind:value {label} items={remap(options)} />
