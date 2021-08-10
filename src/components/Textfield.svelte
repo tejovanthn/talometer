@@ -27,5 +27,9 @@
   input {
     border-radius: 0;
     border: 1px solid var(--primary);
+    background-color: var(--primary-accent);
+  }
+  label {
+    font-size: 0.8rem;
   }
 </style>

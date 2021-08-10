@@ -33,4 +33,10 @@
     border-radius: 0;
     border: 1px solid var(--primary);
   }
+  label {
+    font-size: 0.8rem;
+  }
+  select {
+    background-color: var(--primary-accent);
+  }
 </style>

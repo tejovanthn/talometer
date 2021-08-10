@@ -36,4 +36,7 @@
     display: flex;
     justify-content: stretch;
   }
+  label {
+    font-size: 0.8rem;
+  }
 </style>
