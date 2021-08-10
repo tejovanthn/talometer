@@ -43,8 +43,9 @@ const get_sequence = (options = default_options) => {
 }
 export default class Talometer {
     private synth: Tone.Synth;
-    private isPlaying: boolean;
     private options = default_options
+
+    isPlaying: boolean = false;
 
     constructor(options = default_options) {
         this.synth = new Tone.Synth().toDestination();

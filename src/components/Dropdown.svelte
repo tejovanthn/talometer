@@ -1,22 +1,12 @@
 <script>
-    export let options;
-    export let onchange;
-    let selected;
+    import { Select } from "smelte";
 
-    const handleChange = (e) => {
-        selected = e.target.value;
-        onchange(selected);
-    };
+    export let label;
+    export let options;
+    export let bindvalue;
+
+    const remap = (arr) =>
+        arr.map((el) => ({ value: el.id, text: `${el.value} (${el.id})` }));
 </script>
 
-<!-- svelte-ignore a11y-no-onchange -->
-<select value={selected} on:change={handleChange}>
-    {#each options as option}
-        <option value={option.id}>
-            {`${option.value} (${option.id})`}
-        </option>
-    {/each}
-</select>
-
-<style>
-</style>
+<Select bind:value={bindvalue} {label} items={remap(options)} />
