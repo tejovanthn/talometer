@@ -5,7 +5,7 @@ export const default_options = {
     tala: "IOO",
     jati: 4,
     bpm: 60,
-    pitch: "C"
+    pitch: "G#"
 }
 
 const MOVEMENT = { UP: "up", DOWN: "down" }

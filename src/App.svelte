@@ -1,39 +1,29 @@
 <script lang="ts">
-  import Talometer, { default_options } from "./talometer";
-  import "smelte/src/tailwind.css";
-  import { Button, Icon } from "smelte";
-  import Controls from "./components/Controls.svelte";
-
-  let talometer_options = default_options;
-
-  let isPlaying = false;
-  const talometer = new Talometer(talometer_options);
-
-  const handleClick = (e) => {
-    switch (e.target.id) {
-      case "playstop":
-        talometer.update(talometer_options);
-        talometer.toggle();
-        isPlaying = !isPlaying;
-        break;
-    }
-  };
+  import Tala from "./Panels/Tala.svelte";
 </script>
 
+<nav>
+  <h1>Talometer</h1>
+</nav>
 <main class="container mx-auto p-4">
-  <Controls bind:options={talometer_options} />
-  <Button
-    id="playstop"
-    on:click={handleClick}
-    icon={!isPlaying ? "play_arrow" : "stop"}
-    classes="my-4 w-full text-center content-center"
-    >{!isPlaying ? "Play" : "Stop"}
-  </Button>
+  <Tala />
 </main>
 
-<head>
-  <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons&display=swap"
-    rel="stylesheet"
-  />
-</head>
+<!-- colors: https://coolors.co/ddf8e8-cdd5d1-b4a6ab-946e83-615055 -->
+<svelte:head>
+  <style>
+    :root {
+      --body-background: #ddf8e8;
+      --primary: #946e83;
+      --secondary: #b4a6ab;
+      --primary-accent: #cdd5d1;
+      --secondary-accent: #615055;
+    }
+  </style>
+</svelte:head>
+
+<style>
+  :global(body) {
+    background-color: var(--body-background);
+  }
+</style>

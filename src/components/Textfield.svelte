@@ -1,15 +1,31 @@
 <script>
-  import { TextField } from "smelte";
-
   export let label;
   export let value;
   export let type;
-  export let classes;
+  export let name;
 </script>
 
-<TextField
-  bind:value
-  {label}
-  {type}
-  classes={`mt-2 mb-6 relative text-gray-600 dark:text-gray-100 ${classes}`}
-/>
+{#if label}
+  <div class="form-group">
+    <label for={name}>{label}</label>
+    <input id={name} {value} {type} />
+  </div>
+{:else}
+  <input id={name} {value} {type} />
+{/if}
+
+<style>
+  .form-group {
+    display: flex;
+  }
+  .form-group label {
+    flex: 1;
+  }
+  .form-group input {
+    flex: 3;
+  }
+  input {
+    border-radius: 0;
+    border: 1px solid var(--primary);
+  }
+</style>
