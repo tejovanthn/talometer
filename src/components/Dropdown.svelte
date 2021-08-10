@@ -1,17 +1,19 @@
 <script>
     export let options;
+    export let onchange;
     let selected;
 
     const handleChange = (e) => {
         selected = e.target.value;
-        console.log(selected);
+        onchange(selected);
     };
 </script>
 
-<select value={selected} on:blur={handleChange}>
+<!-- svelte-ignore a11y-no-onchange -->
+<select value={selected} on:change={handleChange}>
     {#each options as option}
         <option value={option.id}>
-            {option.value}
+            {`${option.value} (${option.id})`}
         </option>
     {/each}
 </select>

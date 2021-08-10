@@ -1,40 +1,35 @@
 <script lang="ts">
-  import Talometer from "./talometer";
+  import Talometer, { default_options } from "./talometer";
+  import { tala, jati, pitch } from "./constants";
   import Dropdown from "./components/Dropdown.svelte";
-  const talometer = new Talometer();
 
-  const tala = [
-    { value: "Dhruva", id: "IOII" },
-    { value: "Matya", id: "IOI" },
-    { value: "Rupaka", id: "OI" },
-    { value: "Jhampa", id: "IUO" },
-    { value: "Triputa", id: "IOO" },
-    { value: "Ata", id: "IIOO" },
-    { value: "Eka", id: "I" },
-  ];
+  const talometer_options = default_options;
 
-  const jati = [
-    { value: "Tisra", id: 4 },
-    { value: "Chatusra", id: 3 },
-    { value: "Khanda", id: 5 },
-    { value: "Misra", id: 7 },
-    { value: "Sankeerna", id: 9 },
-  ];
+  const on_tala_change = (data) => (talometer_options.tala = data);
+  const on_jati_change = (data) => (talometer_options.jati = data);
+  const on_pitch_change = (data) => (talometer_options.pitch = data);
+  const on_bpm_change = (e) => (talometer_options.bpm = +e.target.value);
+
+  let talometer = new Talometer(talometer_options);
 
   const handleClick = (e) => {
     switch (e.target.id) {
-      case "pauseplay":
-        talometer.toggle();
+      case "start":
+        talometer.update(talometer_options);
+        talometer.play();
         break;
       default:
+        talometer.stop();
         break;
     }
   };
-  talometer.play();
 </script>
 
 <main>
-  <Dropdown options={tala} />
-  <Dropdown options={jati} />
-  <button id="pauseplay" on:click={handleClick}>Start</button>
+  <Dropdown options={tala} onchange={on_tala_change} />
+  <Dropdown options={jati} onchange={on_jati_change} />
+  <Dropdown options={pitch} onchange={on_pitch_change} />
+  <input type="number" on:change={on_bpm_change} value="60" />
+  <button id="start" on:click={handleClick}>Start</button>
+  <button id="stop" on:click={handleClick}>Stop</button>
 </main>
