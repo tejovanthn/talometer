@@ -9,7 +9,7 @@
   <Tala />
 </main>
 <footer>
-  Made with ❤️ by <a href="https://tejovanthn.com">Tj</a>
+  Made with ❤️ by <a href="https://tejovanthn.com/now">Tj</a>
 </footer>
 
 <!-- colors: https://coolors.co/ddf8e8-cdd5d1-b4a6ab-946e83-615055 -->
