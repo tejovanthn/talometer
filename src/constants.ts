@@ -1,11 +1,16 @@
 export const tala = [
-  { value: "Dhruva", id: "IOII" },
-  { value: "Matya", id: "IOI" },
-  { value: "Rupaka", id: "OI" },
-  { value: "Jhampa", id: "IUO" },
-  { value: "Triputa", id: "IOO" },
-  { value: "Ata", id: "IIOO" },
-  { value: "Eka", id: "I" },
+  { value: "Dhruva", id: "I#-O-I#-I#" },
+  { value: "Matya", id: "I#-O-I#" },
+  { value: "Rupaka", id: "O-I#" },
+  { value: "Jhampa", id: "I#-U-O" },
+  { value: "Triputa", id: "I#-O-O" },
+  { value: "Ata", id: "I#-I#-O-O" },
+  { value: "Eka", id: "I#" },
+  { value: "Mishra Chaapu", id: "I3-I4" },
+  { value: "Kanda Chaapu", id: "I2-I3" },
+  { value: "Thisra Chaapu", id: "I1-I2" },
+  { value: "Sankeerna Chaapu", id: "I3-I6" },
+  { value: "Viloma Chaapu", id: "I4-I3" }
 ];
 
 export const jati = [
