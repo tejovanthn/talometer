@@ -24,6 +24,7 @@
 <style>
   .form-group {
     display: flex;
+    margin: 0.5rem 0;
   }
   .form-group label {
     flex: 1;
