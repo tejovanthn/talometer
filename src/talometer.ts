@@ -16,22 +16,20 @@ export default class Talometer {
 
   constructor(options = default_options) {
     this.synth = new Tone.Synth().toDestination();
-    this.update([], options)
+    this.update([], [], options)
   }
 
-  update(sequence = [], options = default_options) {
-    console.log(sequence)
+  update(sequence = [], play = [], options = default_options) {
     this.options = { ...options }
-    const notes_array = get_notes(sequence, options)
-
+    const notes_array = get_notes(sequence, play, this.options)
     // https://github.com/Tonejs/Tone.js/issues/580
     if (this.seq) {
       this.seq.dispose()
     }
 
     this.seq = new Tone.Sequence((time, note) => {
-      options.nextNote()
-      this.synth.triggerAttackRelease(note, 0.1, time);
+      this.options.nextNote()
+      if (note !== "K") this.synth.triggerAttackRelease(note, 0.1, time);
     }, notes_array)
   }
 

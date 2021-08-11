@@ -13,14 +13,19 @@
 
   let talometer_options = { ...default_options, nextNote };
   $: sequence = get_sequence(talometer_options);
+  $: play = Array.from(get_sequence(talometer_options)).fill(true);
 
   let isPlaying = false;
   const talometer = new Talometer(talometer_options);
 
+  const handleToggle = ({ detail: { data: id } }) => {
+    play[id] = !play[id];
+  };
+
   const handleClick = (e) => {
     switch (e.target.id) {
       case "playstop":
-        talometer.update(sequence, talometer_options);
+        talometer.update(sequence, play, talometer_options);
         talometer.toggle();
         isPlaying = !isPlaying;
         index = -1;
@@ -58,7 +63,12 @@
   </svelte:fragment>
   <svelte:fragment slot="control-bar">
     <Bpm bind:value={talometer_options.bpm} />
-    <Lights bind:sequence bind:activeIndex={index} />
+    <Lights
+      bind:sequence
+      bind:activeIndex={index}
+      on:toggle={handleToggle}
+      bind:play
+    />
   </svelte:fragment>
 </Panel>
 <hr />

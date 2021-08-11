@@ -1,15 +1,25 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
   export let activeIndex;
   export let sequence;
+  export let play;
+
+  const dispatch = createEventDispatcher();
+
+  const handleClick = (id) => {
+    dispatch("toggle", { data: id });
+  };
 </script>
 
 <div class="lights" style="--units:{sequence.length}">
   {#each sequence as note, i}
-    <div
+    <button
       class={`note ${note} ${
         i === activeIndex % sequence.length ? "active" : ""
-      }`}
-    />
+      } ${play[i] ? "play" : "mute"}`}
+      on:click={() => handleClick(i)}>{i + 1}</button
+    >
   {/each}
 </div>
 
@@ -20,7 +30,7 @@
     background-color: var(--body-background);
     border: 1px solid var(--primary);
   }
-  .active {
+  .note.active {
     background-color: var(--primary);
   }
   .lights {
@@ -32,5 +42,8 @@
   }
   .up:first-child {
     margin-left: 0;
+  }
+  .mute {
+    background-color: var(--primary-accent);
   }
 </style>
