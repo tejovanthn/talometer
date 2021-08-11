@@ -18,8 +18,8 @@
       class={`note ${note} ${
         i === activeIndex % sequence.length ? "active" : ""
       } ${play[i] ? "play" : "mute"}`}
-      on:click={() => handleClick(i)}>{i + 1}</button
-    >
+      on:click={() => handleClick(i)}
+    />
   {/each}
 </div>
 
@@ -29,6 +29,7 @@
     height: 2rem;
     background-color: var(--body-background);
     border: 1px solid var(--primary);
+    padding: 0;
   }
   .note.active {
     background-color: var(--primary);
