@@ -11,7 +11,9 @@
 <div class="lights" style="--units:{sequence.length}">
   {#each sequence as note, i}
     <div
-      class={`note ${i === activeIndex % sequence.length ? "active" : ""}`}
+      class={`note ${note} ${
+        i === activeIndex % sequence.length ? "active" : ""
+      }`}
     />
   {/each}
 </div>
@@ -29,5 +31,11 @@
   .lights {
     display: flex;
     margin-top: 1rem;
+  }
+  .up {
+    margin-left: 0.5rem;
+  }
+  .up:first-child {
+    margin-left: 0;
   }
 </style>

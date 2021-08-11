@@ -25,7 +25,7 @@ export const get_sequence = (options = default_options) => {
     switch (letter) {
       case 'I': return laghu;
       case 'O': return dhrita;
-      case 'I': return anudhrita;
+      case 'U': return anudhrita;
     }
   })
 }
