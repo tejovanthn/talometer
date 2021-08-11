@@ -39,5 +39,6 @@
   }
   select {
     background-color: var(--primary-accent);
+    min-height: 2rem;
   }
 </style>

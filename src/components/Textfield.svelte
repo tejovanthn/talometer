@@ -29,6 +29,7 @@
     border-radius: 0;
     border: 1px solid var(--primary);
     background-color: var(--primary-accent);
+    min-height: 2rem;
     width: 100%;
   }
   label {

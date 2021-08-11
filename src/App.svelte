@@ -32,10 +32,6 @@
       --primary-accent: #cdd5d1;
       --secondary-accent: #615055;
     }
-    body {
-      font-family: "Noto Sans", sans-serif;
-      font-size: 18px;
-    }
   </style>
 </svelte:head>
 
