@@ -52,6 +52,7 @@
       name="jati"
       options={jati}
       label={"Jati"}
+      disabled={!talometer_options.tala.includes("#")}
       bind:value={talometer_options.jati}
     />
     <Dropdown
