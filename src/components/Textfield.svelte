@@ -28,6 +28,7 @@
     border-radius: 0;
     border: 1px solid var(--primary);
     background-color: var(--primary-accent);
+    width: 100%;
   }
   label {
     font-size: 0.8rem;

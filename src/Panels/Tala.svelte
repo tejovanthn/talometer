@@ -5,8 +5,12 @@
   import Bpm from "../components/BPM.svelte";
   import Panel from "../components/Panel.svelte";
   import Button from "../components/Button.svelte";
+  import Lights from "../components/Lights.svelte";
 
-  let talometer_options = default_options;
+  let index = -1;
+  const nextNote = () => index++;
+
+  let talometer_options = { ...default_options, nextNote };
 
   let isPlaying = false;
   const talometer = new Talometer(talometer_options);
@@ -17,6 +21,7 @@
         talometer.update(talometer_options);
         talometer.toggle();
         isPlaying = !isPlaying;
+        index = -1;
         break;
     }
   };
@@ -51,6 +56,7 @@
   </svelte:fragment>
   <svelte:fragment slot="control-bar">
     <Bpm bind:value={talometer_options.bpm} />
+    <Lights bind:options={talometer_options} bind:activeIndex={index} />
   </svelte:fragment>
 </Panel>
 <hr />
