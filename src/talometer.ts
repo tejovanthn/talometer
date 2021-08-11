@@ -1,50 +1,13 @@
 import * as Tone from "tone";
-import { pitch } from "./constants";
+import { default_options as sequencer_default_options } from "./sequencer";
+import { get_notes } from "./notes";
 
 export const default_options = {
-  tala: "IOO",
-  jati: 4,
+  ...sequencer_default_options,
   bpm: 60,
-  pitch: "G#",
   nextNote: () => { },
 }
 
-const MOVEMENT = { UP: "up", DOWN: "down" }
-
-const get_laghu = (options = default_options) => {
-  return [MOVEMENT.UP, ...Array(options.jati - 1).fill(MOVEMENT.DOWN)]
-}
-
-export const get_sequence = (options = default_options) => {
-
-  const laghu = get_laghu(options)
-  const dhrita = [MOVEMENT.UP, MOVEMENT.DOWN]
-  const anudhrita = [MOVEMENT.UP]
-
-  return options.tala.split('').map(letter => {
-    switch (letter) {
-      case 'I': return laghu;
-      case 'O': return dhrita;
-      case 'U': return anudhrita;
-    }
-  })
-}
-const get_notes = (options = default_options) => {
-  const sequence = get_sequence(options).flat()
-  const base_pitch_idx = pitch.findIndex(el => el.id === options.pitch)
-  const pitch_map = {
-    "up": pitch[base_pitch_idx].id,
-    "down": pitch[(base_pitch_idx + 7) % 12].id
-  }
-
-  return sequence.map(letter => {
-    switch (letter) {
-      case MOVEMENT.UP: return `${pitch_map.up}4`
-      case MOVEMENT.DOWN: return `${pitch_map.down}3`
-    }
-  })
-
-}
 export default class Talometer {
   private synth: Tone.Synth;
   private seq: Tone.Sequence;
@@ -53,12 +16,13 @@ export default class Talometer {
 
   constructor(options = default_options) {
     this.synth = new Tone.Synth().toDestination();
-    this.update(options)
+    this.update([], options)
   }
 
-  update(options = default_options) {
+  update(sequence = [], options = default_options) {
+    console.log(sequence)
     this.options = { ...options }
-    const sequence = get_notes(options)
+    const notes_array = get_notes(sequence, options)
 
     // https://github.com/Tonejs/Tone.js/issues/580
     if (this.seq) {
@@ -67,9 +31,8 @@ export default class Talometer {
 
     this.seq = new Tone.Sequence((time, note) => {
       options.nextNote()
-      console.log(`${note} ${time}`)
       this.synth.triggerAttackRelease(note, 0.1, time);
-    }, sequence)
+    }, notes_array)
   }
 
   play() {

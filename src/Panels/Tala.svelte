@@ -1,5 +1,6 @@
 <script>
   import Talometer, { default_options } from "../talometer";
+  import { get_sequence } from "../sequencer";
   import { tala, jati, pitch } from "../constants";
   import Dropdown from "../components/Dropdown.svelte";
   import Bpm from "../components/BPM.svelte";
@@ -11,6 +12,7 @@
   const nextNote = () => index++;
 
   let talometer_options = { ...default_options, nextNote };
+  $: sequence = get_sequence(talometer_options);
 
   let isPlaying = false;
   const talometer = new Talometer(talometer_options);
@@ -18,7 +20,7 @@
   const handleClick = (e) => {
     switch (e.target.id) {
       case "playstop":
-        talometer.update(talometer_options);
+        talometer.update(sequence, talometer_options);
         talometer.toggle();
         isPlaying = !isPlaying;
         index = -1;
@@ -56,7 +58,7 @@
   </svelte:fragment>
   <svelte:fragment slot="control-bar">
     <Bpm bind:value={talometer_options.bpm} />
-    <Lights bind:options={talometer_options} bind:activeIndex={index} />
+    <Lights bind:sequence bind:activeIndex={index} />
   </svelte:fragment>
 </Panel>
 <hr />

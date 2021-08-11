@@ -1,11 +1,6 @@
 <script>
-  import { get_sequence } from "../talometer";
-
   export let activeIndex;
-  export let options;
-
-  $: sequence = get_sequence(options).flat();
-  console.log(sequence);
+  export let sequence;
 </script>
 
 <div class="lights" style="--units:{sequence.length}">
