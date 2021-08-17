@@ -26,6 +26,7 @@
   .form-group {
     display: flex;
     margin: 0.5rem 0;
+    align-items: center;
   }
   .form-group label {
     flex: 1;

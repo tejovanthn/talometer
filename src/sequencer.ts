@@ -1,6 +1,7 @@
 export const default_options = {
   tala: "I#-O-O",
   jati: 4,
+  nadai: 1,
   pitch: "G#",
 };
 

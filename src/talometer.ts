@@ -13,6 +13,7 @@ export default class Talometer {
   private seq: Tone.Sequence;
   private options = default_options
   private isPlaying: boolean = false;
+  private nadai_index = -1
 
   constructor(options = default_options) {
     this.synth = new Tone.Synth().toDestination();
@@ -22,15 +23,18 @@ export default class Talometer {
   update(sequence = [], play = [], options = default_options) {
     this.options = { ...options }
     const notes_array = get_notes(sequence, play, this.options)
+    const nadai_sequence = notes_array.map(letter => Array(options.nadai).fill(letter))
+
     // https://github.com/Tonejs/Tone.js/issues/580
     if (this.seq) {
       this.seq.dispose()
     }
 
     this.seq = new Tone.Sequence((time, note) => {
-      this.options.nextNote()
+      this.nadai_index++
+      if (this.nadai_index % this.options.nadai === 0) { this.options.nextNote() }
       if (note !== "K") this.synth.triggerAttackRelease(note, 0.1, time);
-    }, notes_array)
+    }, nadai_sequence)
   }
 
   play() {
@@ -45,6 +49,7 @@ export default class Talometer {
   stop() {
     this.seq.dispose()
     Tone.Transport.stop();
+    this.nadai_index = -1
     this.isPlaying = false;
   }
 

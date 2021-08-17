@@ -21,6 +21,16 @@ export const jati = [
   { value: "Sankeerna", id: 9 },
 ];
 
+export const nadai = [
+  { value: "None", id: 1 }
+  { value: "Double", id: 2 },
+  { value: "Tisra", id: 3 },
+  { value: "Chatusra", id: 4 },
+  { value: "Khanda", id: 5 },
+  { value: "Misra", id: 7 },
+  { value: "Sankeerna", id: 9 },
+]
+
 export const pitch = [
   { value: "1", id: "C" },
   { value: "1.5", id: "C#" },

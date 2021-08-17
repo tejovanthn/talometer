@@ -1,7 +1,7 @@
 <script>
   import Talometer, { default_options } from "../talometer";
   import { get_sequence } from "../sequencer";
-  import { tala, jati, pitch } from "../constants";
+  import { tala, jati, nadai, pitch } from "../constants";
   import Dropdown from "../components/Dropdown.svelte";
   import Bpm from "../components/BPM.svelte";
   import Panel from "../components/Panel.svelte";
@@ -54,6 +54,13 @@
       label={"Jati"}
       disabled={!talometer_options.tala.includes("#")}
       bind:value={talometer_options.jati}
+    />
+    <Dropdown
+      name="nadai"
+      options={nadai}
+      label={"Nadai"}
+      disabled={!talometer_options.tala.includes("#")}
+      bind:value={talometer_options.nadai}
     />
     <Dropdown
       name="pitch"
