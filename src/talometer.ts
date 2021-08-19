@@ -6,22 +6,36 @@ export const default_options = {
   ...sequencer_default_options,
   bpm: 60,
   nextNote: () => { },
+  useSampler: true
 }
 
 export default class Talometer {
-  private synth: Tone.Synth;
+  private synth: Tone.Synth | Tone.Sampler;
   private seq: Tone.Sequence;
   private options = default_options
   private isPlaying: boolean = false;
   private nadai_index = -1
 
   constructor(options = default_options) {
-    this.synth = new Tone.Synth().toDestination();
     this.update([], [], options)
   }
 
   update(sequence = [], play = [], options = default_options) {
     this.options = { ...options }
+
+    if (options.useSampler) {
+      this.synth = new Tone.Sampler({
+        urls: {
+          "G#4": "./sounds/up.mp3",
+          "D#3": "./sounds/down.mp3"
+        },
+        release: 1,
+      }).toDestination();
+    } else {
+      this.synth = new Tone.Synth().toDestination()
+    }
+
+
     const notes_array = get_notes(sequence, play, this.options)
     const nadai_sequence = notes_array.map(letter => Array(options.nadai).fill(letter))
 
