@@ -6,7 +6,7 @@ export const default_options = {
   ...sequencer_default_options,
   bpm: 60,
   nextNote: () => { },
-  useSampler: true
+  useSampler: false
 }
 
 export default class Talometer {
