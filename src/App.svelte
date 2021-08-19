@@ -1,16 +1,30 @@
 <script lang="ts">
+  import { Router, Route } from "svelte-navigator";
   import Tala from "./Panels/Tala.svelte";
+  import History from "./Panels/History.svelte";
+  import ActiveLink from "./components/ActiveLink.svelte";
 </script>
 
-<nav>
-  <h1>Talometer</h1>
-</nav>
-<main class="container mx-auto p-4">
-  <Tala />
-</main>
-<footer>
-  Made with ❤️ by <a href="https://tejovanthn.com/now">Tj</a>
-</footer>
+<Router>
+  <nav>
+    <h1>Talometer</h1>
+    <ActiveLink to="/">Play</ActiveLink>
+    <ActiveLink to="history">History</ActiveLink>
+  </nav>
+  <hr />
+
+  <main class="container mx-auto p-4">
+    <Route path="/">
+      <Tala />
+    </Route>
+    <Route path="history">
+      <History />
+    </Route>
+  </main>
+  <footer>
+    Made with ❤️ by <a href="https://tejovanthn.com/now">Tj</a>
+  </footer>
+</Router>
 
 <!-- colors: https://coolors.co/ddf8e8-cdd5d1-b4a6ab-946e83-615055 -->
 <svelte:head>

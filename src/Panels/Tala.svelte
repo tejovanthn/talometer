@@ -7,11 +7,12 @@
   import Panel from "../components/Panel.svelte";
   import Button from "../components/Button.svelte";
   import Lights from "../components/Lights.svelte";
+  import { loadStates, saveState } from "../store";
 
   let index = -1;
   const nextNote = () => index++;
 
-  let talometer_options = { ...default_options, nextNote };
+  let talometer_options = { ...default_options };
   $: sequence = get_sequence(talometer_options);
   $: play = Array.from(get_sequence(talometer_options)).fill(true);
 
@@ -25,8 +26,11 @@
   const handleClick = (e) => {
     switch (e.target.id) {
       case "playstop":
-        talometer.update(sequence, play, talometer_options);
+        talometer.update(sequence, play, nextNote, talometer_options);
         talometer.toggle();
+        if (!isPlaying) {
+          saveState({ sequence, play, talometer_options });
+        }
         isPlaying = !isPlaying;
         index = -1;
         break;
@@ -34,7 +38,6 @@
   };
 </script>
 
-<hr />
 <Panel>
   <svelte:fragment slot="action">
     <Button classes="full primary" id="playstop" clickHandler={handleClick}
@@ -80,9 +83,3 @@
   </svelte:fragment>
 </Panel>
 <hr />
-
-<style>
-  hr {
-    border: 0.5px solid var(--primary);
-  }
-</style>

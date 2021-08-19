@@ -22,7 +22,7 @@ export const jati = [
 ];
 
 export const nadai = [
-  { value: "None", id: 1 }
+  { value: "Single", id: 1 },
   { value: "Double", id: 2 },
   { value: "Tisra", id: 3 },
   { value: "Chatusra", id: 4 },

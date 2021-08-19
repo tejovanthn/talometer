@@ -19,3 +19,13 @@ body {
     font-size: 24px;
   }
 }
+nav > a.active {
+  color: black;
+}
+nav > a {
+  color: var(--primary);
+  text-decoration: unset;
+}
+hr {
+  border: 0.5px solid var(--primary);
+}
