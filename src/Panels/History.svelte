@@ -10,7 +10,6 @@
 
   const onPlay = (index) => {
     const options = $savedStates[index];
-    console.log($savedStates[index]);
     const nextNote = indexOps.increment;
 
     talometer_options.set(options.talometer_options);
