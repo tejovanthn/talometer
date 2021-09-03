@@ -3,7 +3,7 @@
   export let options;
   export let value;
   export let name;
-  export let disabled;
+  export let disabled = false;
 
   const handleChange = (e) => {
     value = e.target.value;

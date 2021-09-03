@@ -1,5 +1,4 @@
 <script>
-  import Talometer from "../talometer";
   import { get_sequence } from "../sequencer";
   import { tala, jati, nadai, pitch } from "../constants";
   import Dropdown from "../components/Dropdown.svelte";
@@ -7,14 +6,9 @@
   import Panel from "../components/Panel.svelte";
   import Button from "../components/Button.svelte";
   import Lights from "../components/Lights.svelte";
-  import {
-    saveState,
-    talometer_options,
-    isPlaying,
-    index,
-    indexOps,
-    talometer,
-  } from "../store";
+  import { isPlaying, index, indexOps } from "../stores/app_store";
+  import { saveState } from "../stores/persist";
+  import { talometer_options, talometer } from "../stores/talometer_state";
 
   const nextNote = indexOps.increment;
 

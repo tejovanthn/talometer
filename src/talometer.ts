@@ -15,8 +15,11 @@ export default class Talometer {
   private isPlaying: boolean = false;
   private nadai_index = -1
   private nextNote = () => { }
+  private vol: Tone.Volume;
 
   constructor(options = default_options) {
+    this.vol = new Tone.Volume(5).toDestination();
+
     this.update([], [], () => { }, options)
   }
 
@@ -48,7 +51,7 @@ export default class Talometer {
     this.seq = new Tone.Sequence((time, note) => {
       this.nadai_index++
       if (this.nadai_index % this.options.nadai === 0) { this.nextNote() }
-      if (note !== "K") this.synth.triggerAttackRelease(note, 0.1, time);
+      if (note !== "K") this.synth.connect(this.vol).triggerAttackRelease(note, 0.1, time);
     }, nadai_sequence)
   }
 
