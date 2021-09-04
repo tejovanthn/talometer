@@ -4,10 +4,7 @@
   export let value;
   export let name;
   export let disabled = false;
-
-  const handleChange = (e) => {
-    value = e.target.value;
-  };
+  export let makeName = (n) => `${n.value} (${n.id})`;
 </script>
 
 <!-- svelte-ignore a11y-no-onchange -->
@@ -16,7 +13,7 @@
   <select id={name} bind:value {disabled}>
     {#each options as option}
       <option value={option.id}>
-        {`${option.value} (${option.id})`.replaceAll("#", "")}
+        {makeName(option)}
       </option>
     {/each}
   </select>

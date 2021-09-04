@@ -57,6 +57,7 @@
       options={tala}
       label={"Tala"}
       bind:value={$talometer_options.tala}
+      makeName={(n) => `${n.value} (${n.id})`.replaceAll("#", "")}
     />
     <Dropdown
       name="jati"
