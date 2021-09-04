@@ -4,7 +4,7 @@ import { writable } from 'svelte/store';
 export const savedStates = writable([])
 
 export const store = localforage.createInstance({
-  name: "talometer"
+  name: "talapettige"
 });
 
 

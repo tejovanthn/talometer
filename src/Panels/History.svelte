@@ -1,12 +1,12 @@
 <script>
   import PlayRecord from "../components/PlayRecord.svelte";
-  import { get_sequence } from "../sequencer";
 
   import { savedStates, loadStates, deleteState } from "../stores/persist";
   import { talometer_options, talometer } from "../stores/talometer_state";
   import { isPlaying, indexOps } from "../stores/app_store";
 
   loadStates();
+  $: playIndex = -1;
 
   const onPlay = (index) => {
     const options = $savedStates[index];
@@ -22,12 +22,11 @@
         options.talometer_options
       );
       if (wasPlaying) {
-        saveState(options);
-      }
-      if (wasPlaying) {
+        playIndex = -1;
         $talometer.stop();
         indexOps.reset();
       } else {
+        playIndex = index;
         $talometer.play();
       }
       // talometer.toggle();
@@ -42,6 +41,7 @@
     options={record.talometer_options}
     onPlay={() => onPlay(index)}
     onDelete={() => onDelete(record)}
+    isPlaying={index === playIndex}
   />
   <hr />
 {/each}

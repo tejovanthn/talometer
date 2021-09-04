@@ -7,6 +7,7 @@
   export let options = default_options;
   export let onPlay;
   export let onDelete;
+  export let isPlaying = false;
 </script>
 
 <div class="panel">
@@ -22,7 +23,9 @@
   </div>
   <div class="controls">
     <Button id="play" classes="" clickHandler={onDelete}>Delete</Button>
-    <Button id="delete" classes="primary" clickHandler={onPlay}>Play</Button>
+    <Button id="delete" classes="primary" clickHandler={onPlay}
+      >{isPlaying ? "Stop" : "Play"}</Button
+    >
   </div>
 </div>
 

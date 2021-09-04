@@ -7,7 +7,7 @@
 
 <Router>
   <nav>
-    <h1>Talometer</h1>
+    <h1>Tala Pettige</h1>
     <ActiveLink to="/">Play</ActiveLink>
     <ActiveLink to="history">History</ActiveLink>
   </nav>

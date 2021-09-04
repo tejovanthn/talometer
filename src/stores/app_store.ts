@@ -16,13 +16,12 @@ const requestWakeLock = async () => {
 
 isPlaying.subscribe(playing => {
   if (playing) {
-    requestWakeLock().then(() => console.log("wakelock requested"))
+    requestWakeLock()
   } else {
     if (wakeLock) {
       wakeLock.release()
         .then(() => {
           wakeLock = null;
-          console.log("wakelock release")
         })
     }
   }

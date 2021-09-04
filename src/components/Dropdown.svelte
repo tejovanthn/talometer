@@ -16,7 +16,7 @@
   <select id={name} bind:value {disabled}>
     {#each options as option}
       <option value={option.id}>
-        {`${option.value} (${option.id})`}
+        {`${option.value} (${option.id})`.replaceAll("#", "")}
       </option>
     {/each}
   </select>
