@@ -2,6 +2,7 @@
   import { Router, Route } from "svelte-navigator";
   import Tala from "./Panels/Tala.svelte";
   import History from "./Panels/History.svelte";
+  import About from "./Panels/About.svelte";
   import ActiveLink from "./components/ActiveLink.svelte";
 </script>
 
@@ -10,6 +11,7 @@
     <h1>Tala Pettige</h1>
     <ActiveLink to="/">Play</ActiveLink>
     <ActiveLink to="history">History</ActiveLink>
+    <ActiveLink to="about">About</ActiveLink>
   </nav>
   <hr />
 
@@ -19,6 +21,9 @@
     </Route>
     <Route path="history">
       <History />
+    </Route>
+    <Route path="about">
+      <About />
     </Route>
   </main>
   <footer>
@@ -58,7 +63,10 @@
     text-align: center;
     bottom: 0;
     width: 100%;
-    margin: 0.5rem -1rem;
-    position: absolute;
+    position: sticky;
+    background: var(--body-background);
+  }
+  main {
+    min-height: 90vh;
   }
 </style>
