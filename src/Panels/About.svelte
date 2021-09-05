@@ -5,7 +5,12 @@
     <li>Set the desired BPM using the +/- 5 and */ 2 buttons.</li>
     <li>Press Play to start the tala pettige</li>
     <li>
-      You'll need to stop and start the pettige for any changes to take effect.
+      You can change the Nadai, Pitch, and BPM while the pettige is running. For
+      Tala and Jati changes, please stop and play.
+    </li>
+    <li>
+      Stop/Play incase the lights go out of sync after making changes while the
+      pettige was running.
     </li>
     <li>You can press on the squares to mute the akshara</li>
   </ul>
@@ -25,3 +30,10 @@
   </p>
   <hr />
 </div>
+
+<style>
+  li,
+  p {
+    font-size: 1rem;
+  }
+</style>

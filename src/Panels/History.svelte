@@ -23,7 +23,6 @@
         options.talometer_options
       );
       if (wasPlaying) {
-        console.log(options);
         saveState({
           sequence: options.sequence,
           play: options.play,
