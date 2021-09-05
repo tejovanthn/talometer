@@ -53,11 +53,15 @@
     align-items: center;
     justify-content: space-around;
   }
+  .control-bar {
+    grid-area: control-bar;
+  }
   p {
     font-size: 1rem;
     margin: 0;
   }
   small {
     font-size: 0.8rem;
+    display: block;
   }
 </style>
