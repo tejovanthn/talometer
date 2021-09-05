@@ -2,6 +2,7 @@
   import PlayRecord from "../components/PlayRecord.svelte";
 
   import { savedStates, loadStates, deleteState } from "../stores/persist";
+  import { saveState } from "../stores/persist";
   import { talometer_options, talometer } from "../stores/talometer_state";
   import { isPlaying, indexOps } from "../stores/app_store";
 
@@ -21,6 +22,14 @@
         nextNote,
         options.talometer_options
       );
+      if (wasPlaying) {
+        console.log(options);
+        saveState({
+          sequence: options.sequence,
+          play: options.play,
+          talometer_options: options.talometer_options,
+        });
+      }
       if (wasPlaying) {
         playIndex = -1;
         $talometer.stop();
@@ -42,6 +51,7 @@
     onPlay={() => onPlay(index)}
     onDelete={() => onDelete(record)}
     isPlaying={index === playIndex}
+    lastPlayed={record.timestamp}
   />
   <hr />
 {/each}

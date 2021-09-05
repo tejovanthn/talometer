@@ -9,6 +9,7 @@ export const store = localforage.createInstance({
 
 
 export const saveState = async (data) => {
+  console.log(JSON.stringify(data))
   await store.setItem(
     JSON.stringify(data),
     Date.now().toString(),

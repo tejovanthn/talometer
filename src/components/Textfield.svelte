@@ -1,5 +1,5 @@
 <script>
-  export let label;
+  export let label = undefined;
   export let value;
   export let type;
   export let name;

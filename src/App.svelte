@@ -24,13 +24,13 @@
   <hr />
 
   <main class="container mx-auto p-4">
-    <Route path="/">
+    <Route path="/" primary={false}>
       <Tala />
     </Route>
-    <Route path="history">
+    <Route path="history" primary={false}>
       <History />
     </Route>
-    <Route path="about">
+    <Route path="about" primary={false}>
       <About />
     </Route>
   </main>
