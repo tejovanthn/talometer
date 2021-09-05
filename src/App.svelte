@@ -12,6 +12,14 @@
     <ActiveLink to="/">Play</ActiveLink>
     <ActiveLink to="history">History</ActiveLink>
     <ActiveLink to="about">About</ActiveLink>
+    <ActiveLink to="settings" className="right"
+      ><img
+        src="./images/settings.svg"
+        alt="settings"
+        height="20px"
+        width="20px"
+      /></ActiveLink
+    >
   </nav>
   <hr />
 

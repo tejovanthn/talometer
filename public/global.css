@@ -38,3 +38,7 @@ h1 {
 h2 {
   font-size: 1.75rem;
 }
+.right {
+  right: 1rem;
+  position: absolute
+}
