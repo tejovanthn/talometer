@@ -45,3 +45,10 @@ export const pitch = [
   { value: "6.5", id: "A#" },
   { value: "7", id: "B" },
 ]
+
+export const noteSets = [
+  { value: "P/S", id: "P/S" },
+  { value: "M/S", id: "M/S" },
+  { value: "Ś/S", id: "Ś/S" },
+  { value: "P/N", id: "P/N" }
+]

@@ -4,6 +4,7 @@
   import History from "./Panels/History.svelte";
   import About from "./Panels/About.svelte";
   import ActiveLink from "./components/ActiveLink.svelte";
+  import Settings from "./Panels/Settings.svelte";
 </script>
 
 <Router>
@@ -12,18 +13,29 @@
     <ActiveLink to="/">Play</ActiveLink>
     <ActiveLink to="history">History</ActiveLink>
     <ActiveLink to="about">About</ActiveLink>
+    <ActiveLink to="settings" className="right"
+      ><img
+        src="./images/settings.svg"
+        alt="settings"
+        height="20px"
+        width="20px"
+      /></ActiveLink
+    >
   </nav>
   <hr />
 
   <main class="container mx-auto p-4">
-    <Route path="/">
+    <Route path="/" primary={false}>
       <Tala />
     </Route>
-    <Route path="history">
+    <Route path="history" primary={false}>
       <History />
     </Route>
-    <Route path="about">
+    <Route path="about" primary={false}>
       <About />
+    </Route>
+    <Route path="settings" primary={false}>
+      <Settings />
     </Route>
   </main>
   <footer>

@@ -3,11 +3,15 @@
 
   import { default_options } from "../sequencer";
   import Button from "./Button.svelte";
+  import dayjs from "dayjs";
+  import relativeTime from "dayjs/plugin/relativeTime";
+  dayjs.extend(relativeTime);
 
   export let options = default_options;
   export let onPlay;
   export let onDelete;
   export let isPlaying = false;
+  export let lastPlayed = undefined;
 </script>
 
 <div class="panel">
@@ -26,6 +30,10 @@
     <Button id="delete" classes="primary" clickHandler={onPlay}
       >{isPlaying ? "Stop" : "Play"}</Button
     >
+  </div>
+  <div class="control-bar">
+    <small>Note Set: {options.noteSets}</small>
+    <small>Last played: {dayjs().to(dayjs(+lastPlayed))}</small>
   </div>
 </div>
 
@@ -47,5 +55,9 @@
   }
   p {
     font-size: 1rem;
+    margin: 0;
+  }
+  small {
+    font-size: 0.8rem;
   }
 </style>

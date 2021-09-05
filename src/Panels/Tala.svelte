@@ -19,6 +19,13 @@
     play[id] = !play[id];
   };
 
+  $: sub = talometer_options.subscribe((options) => {
+    $talometer.update(sequence, play, nextNote, options);
+    if ($isPlaying) {
+      $talometer.play();
+    }
+  });
+
   const handleClick = (e) => {
     switch (e.target.id) {
       case "playstop":
@@ -56,6 +63,7 @@
       name="tala"
       options={tala}
       label={"Tala"}
+      disabled={$isPlaying}
       bind:value={$talometer_options.tala}
       makeName={(n) => `${n.value} (${n.id})`.replaceAll("#", "")}
     />
@@ -63,7 +71,7 @@
       name="jati"
       options={jati}
       label={"Jati"}
-      disabled={!$talometer_options.tala.includes("#")}
+      disabled={!$talometer_options.tala.includes("#") || $isPlaying}
       bind:value={$talometer_options.jati}
     />
     <Dropdown
@@ -81,7 +89,7 @@
     />
   </svelte:fragment>
   <svelte:fragment slot="control-bar">
-    <Bpm bind:value={$talometer_options.bpm} />
+    <Bpm value={$talometer_options.bpm} onchange={talometer_options.setBPM} />
     <Lights
       bind:sequence
       bind:activeIndex={$index}
