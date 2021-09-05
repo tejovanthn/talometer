@@ -13,6 +13,7 @@
       pettige was running.
     </li>
     <li>You can press on the squares to mute the akshara</li>
+    <li>You can change the note for Up/Down beats in the settings menu</li>
   </ul>
   <hr />
   <h2>Support</h2>

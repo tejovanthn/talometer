@@ -3,6 +3,7 @@ export const default_options = {
   jati: 4,
   nadai: 1,
   pitch: "G#",
+  noteSets: "P/S",
 };
 
 export enum MOVEMENT { UP = "up", DOWN = "down" };

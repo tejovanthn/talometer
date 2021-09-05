@@ -4,6 +4,7 @@
   import History from "./Panels/History.svelte";
   import About from "./Panels/About.svelte";
   import ActiveLink from "./components/ActiveLink.svelte";
+  import Settings from "./Panels/Settings.svelte";
 </script>
 
 <Router>
@@ -32,6 +33,9 @@
     </Route>
     <Route path="about" primary={false}>
       <About />
+    </Route>
+    <Route path="settings" primary={false}>
+      <Settings />
     </Route>
   </main>
   <footer>

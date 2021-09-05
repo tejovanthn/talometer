@@ -32,6 +32,7 @@
     >
   </div>
   <div class="control-bar">
+    <small>Note Set: {options.noteSets}</small>
     <small>Last played: {dayjs().to(dayjs(+lastPlayed))}</small>
   </div>
 </div>
@@ -54,6 +55,7 @@
   }
   p {
     font-size: 1rem;
+    margin: 0;
   }
   small {
     font-size: 0.8rem;
