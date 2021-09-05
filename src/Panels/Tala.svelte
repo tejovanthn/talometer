@@ -19,7 +19,7 @@
     play[id] = !play[id];
   };
 
-  talometer_options.subscribe((options) => {
+  $: sub = talometer_options.subscribe((options) => {
     $talometer.update(sequence, play, nextNote, options);
     if ($isPlaying) {
       $talometer.play();
