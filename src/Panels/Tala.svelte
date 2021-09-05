@@ -81,7 +81,7 @@
     />
   </svelte:fragment>
   <svelte:fragment slot="control-bar">
-    <Bpm bind:value={$talometer_options.bpm} />
+    <Bpm value={$talometer_options.bpm} onchange={talometer_options.setBPM} />
     <Lights
       bind:sequence
       bind:activeIndex={$index}

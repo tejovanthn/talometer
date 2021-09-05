@@ -3,15 +3,20 @@
   export let value;
   export let type;
   export let name;
+  export let onchange = (e) => {};
+
+  const handleChange = (e) => {
+    onchange(e.target.value);
+  };
 </script>
 
 {#if label}
   <div class="form-group">
     <label for={name}>{label}</label>
-    <input id={name} {value} {type} />
+    <input id={name} {value} {type} on:input={handleChange} />
   </div>
 {:else}
-  <input id={name} {value} {type} />
+  <input id={name} {value} {type} on:input={handleChange} />
 {/if}
 
 <style>
