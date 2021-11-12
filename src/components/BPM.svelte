@@ -3,7 +3,7 @@
   import Button from "./Button.svelte";
 
   export let value;
-  export let onchange = (value) => {};
+  export let onchange = () => {};
 
   const handleClick = (e) => {
     switch (e.target.id) {

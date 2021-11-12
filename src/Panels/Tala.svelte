@@ -9,6 +9,7 @@
   import { isPlaying, index, indexOps } from "../stores/app_store";
   import { saveState } from "../stores/persist";
   import { talometer_options, talometer } from "../stores/talometer_state";
+  import Volume from "../components/Volume.svelte";
 
   const nextNote = indexOps.increment;
 
@@ -19,7 +20,7 @@
     play[id] = !play[id];
   };
 
-  $: sub = talometer_options.subscribe((options) => {
+  talometer_options.subscribe((options) => {
     $talometer.update(sequence, play, nextNote, options);
     if ($isPlaying) {
       $talometer.play();
@@ -53,6 +54,9 @@
 </script>
 
 <Panel>
+  <svelte:fragment slot="title">
+    <h3>Tala</h3>
+  </svelte:fragment>
   <svelte:fragment slot="action">
     <Button classes="full primary" id="playstop" clickHandler={handleClick}
       >{!$isPlaying ? "Play" : "Stop"}</Button
@@ -96,6 +100,21 @@
       on:toggle={handleToggle}
       bind:play
     />
+    <Volume
+      value={$talometer_options.talaVolume}
+      onchange={talometer_options.setTalaVolume}
+    />
   </svelte:fragment>
 </Panel>
 <hr />
+<Panel>
+  <svelte:fragment slot="title">
+    <h3>Shruthi</h3>
+  </svelte:fragment>
+  <svelte:fragment slot="control-bar">
+    <Volume
+      value={$talometer_options.tanpuraVolume}
+      onchange={talometer_options.setTanpuraVolume}
+    />
+  </svelte:fragment>
+</Panel>

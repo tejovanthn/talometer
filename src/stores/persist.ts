@@ -9,8 +9,11 @@ export const store = localforage.createInstance({
 
 
 export const saveState = async (data) => {
+  const { play, sequence, talometer_options } = data
+  const { talaVolume, tanpuraVolume, ...rest } = talometer_options
+  const saveData = { play, sequence, talometer_options: rest }
   await store.setItem(
-    JSON.stringify(data),
+    JSON.stringify(saveData),
     Date.now().toString(),
   )
 }

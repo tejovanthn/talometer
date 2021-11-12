@@ -3,7 +3,7 @@
   export let value;
   export let type;
   export let name;
-  export let onchange = (e) => {};
+  export let onchange = () => {};
 
   const handleChange = (e) => {
     onchange(e.target.value);

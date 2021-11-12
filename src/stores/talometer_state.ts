@@ -9,5 +9,13 @@ export const talometer_options = {
   setBPM: (value) => options.update(self => {
     self.bpm = value;
     return self
+  }),
+  setTalaVolume: (value) => options.update(self => {
+    self.talaVolume = value;
+    return self
+  }),
+  setTanpuraVolume: (value) => options.update(self => {
+    self.tanpuraVolume = value;
+    return self
   })
 }
