@@ -18,7 +18,7 @@ export default class Talometer {
   private vol: Tone.Volume;
 
   constructor(options = default_options) {
-    this.vol = new Tone.Volume(5).toDestination();
+    this.vol = new Tone.Volume(1).toDestination();
 
     this.update([], [], () => { }, options)
   }
