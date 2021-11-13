@@ -36,12 +36,19 @@
     display: flex;
     justify-content: stretch;
     width: 100%;
+    align-items: center;
   }
   label {
     font-size: 0.8rem;
   }
   .slider {
+    appearance: none;
     flex: 5;
+    margin: 0 1rem;
+    height: 0.25rem;
     width: 100%;
+    background: var(--primary-accent);
+    outline: none;
+    accent-color: var(--primary);
   }
 </style>

@@ -21,7 +21,7 @@
       "action controls"
       "control-bar control-bar";
   }
-  .panel > div {
+  .panel > div:not(:empty) {
     margin: 0.5rem;
   }
   .title {

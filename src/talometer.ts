@@ -72,8 +72,8 @@ export default class Talometer {
       this.tampura.triggerAttackRelease(`${options.pitch}3`, `12s`, time)
     }, `1n`);
 
-    this.synth.volume.value = this.options.talaVolume
-    this.tampura.volume.value = this.options.tanpuraVolume
+    this.synth.volume.value = this.options.talaVolume || default_options.talaVolume
+    this.tampura.volume.value = this.options.tanpuraVolume || default_options.talaVolume
   }
 
   play() {
