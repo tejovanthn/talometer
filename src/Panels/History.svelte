@@ -23,11 +23,7 @@
         options.talometer_options
       );
       if (wasPlaying) {
-        saveState({
-          sequence: options.sequence,
-          play: options.play,
-          talometer_options: options.talometer_options,
-        });
+        saveState(options);
       }
       if (wasPlaying) {
         playIndex = -1;
