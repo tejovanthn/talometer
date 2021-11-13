@@ -22,8 +22,8 @@
   <Button classes="secondary" id="mute" clickHandler={handleClick}>Mute</Button>
   <input
     type="range"
-    min="-10"
-    max="10"
+    min="-25"
+    max="25"
     {value}
     class="slider"
     id="range"
