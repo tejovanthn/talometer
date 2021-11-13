@@ -42,13 +42,16 @@
     });
   };
   const onDelete = (record) => deleteState(record);
+  const onEdited = (record, name) => saveState({ ...record, name });
 </script>
 
 {#each $savedStates as record, index}
   <PlayRecord
+    name={record.name}
     options={record.talometer_options}
     onPlay={() => onPlay(index)}
     onDelete={() => onDelete(record)}
+    onEdited={(name) => onEdited(record, name)}
     isPlaying={index === playIndex}
     lastPlayed={record.timestamp}
   />

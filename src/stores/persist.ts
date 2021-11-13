@@ -7,15 +7,20 @@ export const store = localforage.createInstance({
   name: "talapettige"
 });
 
+const formatData = (data) => {
+  const { play, sequence, talometer_options, name = null } = data
+  const { talaVolume, tanpuraVolume, ...rest } = talometer_options
+  return { play, sequence, name, talometer_options: rest }
+}
 
 export const saveState = async (data) => {
-  const { play, sequence, talometer_options } = data
-  const { talaVolume, tanpuraVolume, ...rest } = talometer_options
-  const saveData = { play, sequence, talometer_options: rest }
+  const saveData = formatData(data)
+  console.log(saveData)
   await store.setItem(
     JSON.stringify(saveData),
     Date.now().toString(),
   )
+  await loadStates()
 }
 export const loadStates = async () => {
   const keys = await store.keys()
