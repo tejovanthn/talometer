@@ -15,7 +15,6 @@ const formatData = (data) => {
 
 export const saveState = async (data) => {
   const saveData = formatData(data)
-  console.log(saveData)
   await store.setItem(
     JSON.stringify(saveData),
     Date.now().toString(),
