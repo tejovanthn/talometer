@@ -5,6 +5,28 @@
   import About from "./Panels/About.svelte";
   import ActiveLink from "./components/ActiveLink.svelte";
   import Settings from "./Panels/Settings.svelte";
+
+  // if ("serviceWorker" in navigator) {
+  //   window.addEventListener("load", function () {
+  //     navigator.serviceWorker.register("/service-worker.js");
+  //   });
+  // }
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("/service-worker.js").then(
+        function (registration) {
+          console.log(
+            "[ServiceWorker] registration successful with scope: ",
+            registration.scope
+          );
+        },
+        function (err) {
+          console.log("[ServiceWorker] registration failed: ", err);
+        }
+      );
+    });
+  }
 </script>
 
 <Router>
@@ -55,6 +77,7 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
     rel="stylesheet"
   />
+  <link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
   <style>
     :root {
       --body-background: #ddf8e8;
