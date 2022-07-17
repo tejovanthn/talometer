@@ -1,6 +1,7 @@
 import * as Tone from "tone";
 import { default_options as sequencer_default_options } from "./sequencer";
 import { get_notes } from "./notes";
+import { log } from "./firebase";
 
 export const default_options = {
   ...sequencer_default_options,
@@ -77,6 +78,7 @@ export default class Talometer {
   }
 
   play() {
+    log("play", {options: this.options})
     Tone.getContext().resume().then(() => {
       Tone.Transport.bpm.value = this.options.bpm;
       this.seq.start(0)

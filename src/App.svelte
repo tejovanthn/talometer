@@ -5,12 +5,7 @@
   import About from "./Panels/About.svelte";
   import ActiveLink from "./components/ActiveLink.svelte";
   import Settings from "./Panels/Settings.svelte";
-
-  // if ("serviceWorker" in navigator) {
-  //   window.addEventListener("load", function () {
-  //     navigator.serviceWorker.register("/service-worker.js");
-  //   });
-  // }
+  import {log} from "./firebase";
 
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {
@@ -27,6 +22,7 @@
       );
     });
   }
+  log("loaded", {})
 </script>
 
 <Router>
